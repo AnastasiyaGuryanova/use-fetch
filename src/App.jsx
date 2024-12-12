@@ -1,10 +1,10 @@
 import { useFetch } from './hooks';
 import './App.css';
 
+const HOST = 'https://jsonplaceholder.typicode.com/';
+
 export const App = () => {
-	const { data, isLoading, error, refetch } = useFetch(
-		'https://jsonplaceholder.typicode.com/posts'
-	);
+	const { data, isLoading, error, refetch } = useFetch(`${HOST}/posts`);
 
 	return (
 		<div>
@@ -26,9 +26,7 @@ export const App = () => {
 
 			{error && 'Произошла ошибка'}
 
-			{data &&
-				!isLoading &&
-				data.map((item) => <div key={item.id}>{item.title}</div>)}
+			{data && !isLoading && data.map((item) => <div key={item.id}>{item.title}</div>)}
 		</div>
 	);
 };
